@@ -1,0 +1,98 @@
+{
+    "Customizations":
+    [
+        {
+            "Name": "git-status-cache-posh-client module",
+            "Description": "Imports git-status-cache-posh-client module.",
+            "Enabled": false,
+            "Script": "ImportModules.ps1",
+            "Settings":
+            [
+                {
+                    "Module": "C:\\repositories\\git-status-cache-posh-client\\GitStatusCachePoshClient.psm1"
+                }
+            ]
+        },
+        {
+            "Name": "load posh-git",
+            "Description": "Calls script to load posh-git.",
+            "Enabled": false,
+            "Script": "CallScripts.ps1",
+            "Settings":
+            [
+                {
+                    "Script": "C:\\repositories\\posh-git\\profile.example.ps1"
+                }
+            ]
+        },
+        {
+            "Name": "program aliases",
+            "Description": "Creates program shortcut aliases.",
+            "Enabled": false,
+            "Script": "SetAliases.ps1",
+            "Settings":
+            [
+                {
+                    "Alias": "cmake",
+                    "Value": "%ProgramFiles(x86)%\\cmake\\bin\\cmake.exe"
+                },
+                {
+                    "Alias": "np",
+                    "Value": "%ProgramFiles(x86)%\\Notepad++\\notepad++.exe"
+                },
+                {
+                    "Alias": "unity",
+                    "Value": "%ProgramFiles(x86)%\\Unity\\editor\\Unity.exe"
+                }
+            ]
+        },
+        {
+            "Name": "environment variables",
+            "Description": "Sets BOOST_ROOT environment variable.",
+            "Enabled": false,
+            "Script": "SetEnvironmentVariables.ps1",
+            "Settings":
+            [
+                {
+                    "Key": "BOOST_ROOT",
+                    "Value": "C:\\boost_1_58_0"
+                }
+            ]
+        },
+        {
+            "Name": "start directory",
+            "Description": "Sets the starting location for the shell.",
+            "Enabled": false,
+            "Script": "SetStartPath.ps1",
+            "Settings":
+            {
+                "Path": "C:\\repositories\\posh-environment"
+            }
+        },
+        {
+            "Name": "TFS macros",
+            "Description": "Creates functions for manipulating TFS shelvesets.",
+            "Enabled": false,
+            "Script": "SetFunctions.ps1",
+            "Settings":
+            [
+                {
+                    "Name": "sp",
+                    "Text": "tf shelve $args"
+                },
+                {
+                    "Name": "sd",
+                    "Text": "tf shelve /noprompt /delete $args"
+                },
+                {
+                    "Name": "sa",
+                    "Text": "tf unshelve /noprompt $args"
+                },
+                {
+                    "Name": "slc",
+                    "Text": "tf shelvesets"
+                }
+            ]
+        }
+    ]
+}

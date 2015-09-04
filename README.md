@@ -32,6 +32,7 @@ posh-environment comes with a variety of customization scripts:
 * SetEnvironmentVariables.ps1
 * SetFunctions.ps1
 * SetStartPath.ps1
+* SetVisualStudio12EnvironmentVariables.ps1
 
 Additional customizations can be defined by providing a path to a script that takes in a settings object deserialized from the settings section in the JSON config. Customizations should return $true when successfully applied and $false with an error message on failure. See existing customizations for examples.
 
@@ -163,5 +164,20 @@ Sets the start path for new PowerShell instances.
 		"Settings":
 		{
 			"Path": "E:\\projects\\posh-environment"
+		}
+	}
+
+### SetVisualStudio12EnvironmentVariables.ps1
+
+Parses VsDevCmd.bat and applies environment variables normally set by the batch script.
+
+	{
+		"Name": "vs variables",
+		"Description": "Sets Visual Studio 12 environment variables from VsDevCmd.bat.",
+		"Enabled": true,
+		"Script": "SetVisualStudio12EnvironmentVariables.ps1",
+		"Settings":
+		{
+			"VisualStudioToolsPath": "%VS120COMNTOOLS%"
 		}
 	}

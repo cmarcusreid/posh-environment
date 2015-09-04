@@ -60,6 +60,16 @@
             ]
         },
         {
+            "Name": "vs environment",
+            "Description": "Sets Visual Studio 12 environment variables from VsDevCmd.bat.",
+            "Enabled": false,
+            "Script": "SetVisualStudio12EnvironmentVariables.ps1",
+            "Settings":
+            {
+                "VisualStudioToolsPath": "%VS120COMNTOOLS%"
+            }
+        },
+        {
             "Name": "start directory",
             "Description": "Sets the starting location for the shell.",
             "Enabled": false,

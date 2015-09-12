@@ -9,7 +9,7 @@ posh-environment will automatically create a sample JSON configuration file and 
 
 1. Launch PowerShell and navigate to posh-environment's root.
 2. Run Install.ps1.
-3. Call ". $profile" to reload PowerShell with customizations.
+3. Reload your shell or call ". $profile" to reload PowerShell with posh-environment.
 
 After installation you can customize your environment by modifying the JSON configuration file.
 

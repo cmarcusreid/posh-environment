@@ -1,6 +1,6 @@
 # posh-environment
 
-posh-environment provides a simple, configuration-based approach to customizing PowerShell environments.
+posh-environment provides a simple configuration-based approach to customizing PowerShell environments.
 Customizations are automatically applied when launching PowerShell after one-time installation.
 
 ## Installation
@@ -22,7 +22,7 @@ After installation you can customize your environment by modifying the JSON conf
 		
 ## Customizations
 
-posh-environment customizations are simple PowerShell scripts in environments customization directory. Customizations can be enabled and configured through the JSON configuration file.
+posh-environment customizations are simple PowerShell scripts in the customization directory. Customizations can be enabled and configured through the JSON configuration file.
 
 posh-environment comes with a variety of customization scripts:
 
@@ -57,22 +57,35 @@ Calls scripts provided in settings.
 
 Imports each module provided in settings.
 
+    {
+        "Name": "git-status-cache-posh-client module",
+        "Description": "Imports git-status-cache-posh-client module.",
+        "Enabled": true,
+        "Script": "ImportModules.ps1",
+        "Settings":
+        [
+            {
+                "Module": "D:\\git-status-cache-posh-client\\GitStatusCachePoshClient.psm1"
+            }
+        ]
+    },
 	{
-		"Name": "git-status-cache-posh-client module",
-		"Description": "Imports git-status-cache-posh-client module.",
+        "Name": "posh-navigation module",
+        "Description": "Imports posh-navigation module.",
 		"Enabled": true,
 		"Script": "ImportModules.ps1",
 		"Settings":
         [
             {
-                "Module": "C:\\repositories\\git-status-cache-posh-client\\GitStatusCachePoshClient.psm1"
+                    "Module": "D:\\posh-navigation\\PoshNavigation.psm1",
+                    "ArgumentList": "D:\\roaming-settings\\posh-navigation\\settings.json"
             }
         ]
 	}
 	
 ### SetAliases.ps1
 
-Registers an alias for each target in settings for quick invocation.
+Registers an alias for each target.
 
 	{
 		"Name": "notepad++ alias",
@@ -98,7 +111,7 @@ The below will open "myFile.txt" in notepad++.
 
 ### SetFunctions.ps1
 
-Registers a global function . Useful for replacements that cannot be achieved with PowerShell aliases.
+Registers a global function for each entry in settings. Useful for replacements that cannot be achieved with PowerShell aliases.
 
 	{
 		"Name": "TFS macros",
@@ -109,15 +122,15 @@ Registers a global function . Useful for replacements that cannot be achieved wi
 		[
 			{
 				"Name": "sp",
-				"Text": "tf shelve "
+				"Text": "tf shelve $args"
 			},
 			{
 				"Name": "sd",
-				"Text": "tf shelve /noprompt /delete "
+				"Text": "tf shelve /noprompt /delete $args"
 			},
 			{
 				"Name": "sa",
-				"Text": "tf unshelve /noprompt "
+				"Text": "tf unshelve /noprompt $args"
 			},
 			{
 				"Name": "slc",
@@ -141,10 +154,10 @@ Sets specified environment variables.
 		"Script": "SetEnvironmentVariablesInSettings.ps1",
 		"Settings":
 		[
-			{
-				"Key": "DpeloymentSettings",
-				"Value": "E:\\path\\to\\overrides.xml"
-			},
+            {
+                "Key": "BOOST_ROOT",
+                "Value": "C:\\boost_1_58_0"
+            },
 			{
 				"Key": "PATH",
 				"Value": "%PATH%;E:\\path\\to\\my\\scripts"
